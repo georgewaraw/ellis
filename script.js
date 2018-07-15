@@ -78,7 +78,7 @@ function keydown( e ) {
     number++
     if ( number > 5 ) { number = 1 }
 
-  }
+  } else if ( e.code === 'Space' ) { videos( ) }
   sequence( number )
 
 }
@@ -194,7 +194,6 @@ function geometries( ) {
 function materials( ) {
 
   videoFloor = document.getElementById( 'videoFloor' )
-  videoFloor.play( )
   textureFloor = new THREE.VideoTexture( videoFloor )
   textureFloor.minFilter = THREE.LinearFilter
   materialFloor = new THREE.MeshLambertMaterial( {
@@ -204,7 +203,6 @@ function materials( ) {
   materialPoolBase = new THREE.MeshLambertMaterial( {
     color : 0x212121 } ) // Gray 900
   videoPoolWater = document.getElementById( 'videoPoolWater' )
-  videoPoolWater.play( )
 
   texturePoolWater = new THREE.VideoTexture( videoPoolWater )
   texturePoolWater.minFilter = THREE.LinearFilter
@@ -220,14 +218,12 @@ function materials( ) {
 
 
   videoTree = document.getElementById( 'videoTree' )
-  videoTree.play( )
   textureTree = new THREE.VideoTexture( videoTree )
   textureTree.minFilter = THREE.LinearFilter
   materialTree = new THREE.MeshLambertMaterial( {
     map : textureTree , side : THREE.DoubleSide } )
 
   videoTree2 = document.getElementById( 'videoTree2' )
-  videoTree2.play( )
   textureTree2 = new THREE.VideoTexture( videoTree2 )
   textureTree2.minFilter = THREE.LinearFilter
   materialTree2 = new THREE.MeshLambertMaterial( {
@@ -235,21 +231,18 @@ function materials( ) {
 
 
   videoBuilding = document.getElementById( 'videoBuilding' )
-  videoBuilding.play( )
   textureBuilding = new THREE.VideoTexture( videoBuilding )
   textureBuilding.minFilter = THREE.LinearFilter
   materialBuilding = new THREE.MeshLambertMaterial( {
     map : textureBuilding } )
 
   videoBuilding2 = document.getElementById( 'videoBuilding2' )
-  videoBuilding2.play( )
   textureBuilding2 = new THREE.VideoTexture( videoBuilding2 )
   textureBuilding2.minFilter = THREE.LinearFilter
   materialBuilding2 = new THREE.MeshLambertMaterial( {
     map : textureBuilding2 } )
 
   videoBuilding3 = document.getElementById( 'videoBuilding3' )
-  videoBuilding3.play( )
   textureBuilding3 = new THREE.VideoTexture( videoBuilding3 )
   textureBuilding3.minFilter = THREE.LinearFilter
   materialBuilding3 = new THREE.MeshLambertMaterial( {
@@ -261,7 +254,6 @@ function materials( ) {
 
 
   videoEye = document.getElementById( 'videoEye' )
-  videoEye.play( )
   textureEye = new THREE.VideoTexture( videoEye )
   textureEye.minFilter = THREE.LinearFilter
   materialEye = new THREE.MeshLambertMaterial( {
@@ -279,6 +271,19 @@ function materials( ) {
     materialBuilding , materialBuilding2 , materialBuilding3 ,
     // 7
     materialFence ]
+
+}
+
+function videos( ) {
+
+  videoFloor.play( )
+  videoPoolWater.play( )
+  videoTree.play( )
+  videoTree2.play( )
+  videoBuilding.play( )
+  videoBuilding2.play( )
+  videoBuilding3.play( )
+  videoEye.play( )
 
 }
 
