@@ -50,6 +50,7 @@ function init( ) {
   lighting( )
   postprocessing( )
 
+  start = 0
   animate( )
 
 }
@@ -78,7 +79,13 @@ function keydown( e ) {
     number++
     if ( number > 5 ) { number = 1 }
 
-  } else if ( e.code === 'Space' ) { videos( ) }
+  } else if ( e.code === 'Space' ) {
+
+    start++
+    if ( start > 1 ) { start = 0 }
+    videos( )
+
+  }
   sequence( number )
 
 }
@@ -139,12 +146,16 @@ function sequence( number ) {
 
 function animate( ) {
 
-  meshEye.rotation.y = Date.now( ) * .0005
-  meshEye.position.y = Math.sin( Date.now( ) * .001 ) * 1000 + 2000
+  if ( start ) {
 
-  meshSnow.position.set(
-      camera.position.x - 2500 , camera.position.y - 2500 , camera.position.z - 2500 )
-  meshSnow.rotation.z = Math.sin( Date.now( ) * .00001 ) / 5
+    meshEye.rotation.y = Date.now( ) * .0005
+    meshEye.position.y = Math.sin( Date.now( ) * .001 ) * 1000 + 2000
+
+    meshSnow.position.set(
+        camera.position.x - 2500 , camera.position.y - 2500 , camera.position.z - 2500 )
+    meshSnow.rotation.z = Math.sin( Date.now( ) * .00001 ) / 5
+
+  }
 
   // d ( 2 )
   // controls.update(
@@ -276,14 +287,29 @@ function materials( ) {
 
 function videos( ) {
 
-  videoFloor.play( )
-  videoPoolWater.play( )
-  videoTree.play( )
-  videoTree2.play( )
-  videoBuilding.play( )
-  videoBuilding2.play( )
-  videoBuilding3.play( )
-  videoEye.play( )
+  if ( start ) {
+
+    videoFloor.play( )
+    videoPoolWater.play( )
+    videoTree.play( )
+    videoTree2.play( )
+    videoBuilding.play( )
+    videoBuilding2.play( )
+    videoBuilding3.play( )
+    videoEye.play( )
+
+  } else {
+
+    videoFloor.pause( )
+    videoPoolWater.pause( )
+    videoTree.pause( )
+    videoTree2.pause( )
+    videoBuilding.pause( )
+    videoBuilding2.pause( )
+    videoBuilding3.pause( )
+    videoEye.pause( )
+
+  }
 
 }
 
