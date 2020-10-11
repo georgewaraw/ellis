@@ -1,3 +1,2 @@
-https://georgewaraw.github.io/ellis/
-
-https://vimeo.com/282912722
+Play/pause with space.
+Toggle camera views with left/right arrow keys.
